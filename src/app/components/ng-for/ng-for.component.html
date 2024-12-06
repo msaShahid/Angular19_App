@@ -1,0 +1,41 @@
+<p>ng-for works!</p>
+
+<div class="row">
+    <div class="col md-4">
+        <ul>
+            <li *ngFor="let city of cityList" > {{city}} </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <select class="form-select" name="" id="">
+            <option *ngFor="let emp of employeObject" [value]="emp.empid" >
+                 {{emp.name}} - {{emp.city}}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Employee Age</th>
+                    <th>Employee City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employeObject; let sl = index">
+                    <td>{{sl+1 }}</td>
+                    <td>{{emp.empid}}</td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.age}}</td>
+                    <td>{{emp.city}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
