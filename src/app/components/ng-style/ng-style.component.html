@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 p-2" [ngStyle]="{'background-color': divBlockColor, 'color':'white'}">
+            div 1
+        </div>
+        <div class="col-md-3 p-2" [ngStyle]="{'background-color':isChecked == true ? 'black':'blue'}">
+            div 2
+        </div>
+        <div class="col-md-3 mx-2" [ngStyle]="cssVal">
+
+        </div>
+    </div>
+    
+    <div class="row mt-2">
+        <div class="col-md-3 mx-2">
+            <button type="button" class="btn btn-md btn-success" (click)="addDivColor('green')">Success</button>
+            <button type="button" class="btn btn-md btn-danger mx-3" (click)="addDivColor('red')">Danger</button>
+        </div>
+        <div class="col-md-3">
+            <input type="checkbox" name="" id="" [(ngModel)]="isChecked">
+        </div>
+    </div>
+</div>
