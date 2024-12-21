@@ -8,6 +8,7 @@ import { NgForComponent } from './components/ng-for/ng-for.component';
 import { ControlStetmentComponent } from './components/control-stetment/control-stetment.component';
 import { SignalComponent } from './components/signal/signal.component';
 import { LinkedSignalComponent } from './components/linked-signal/linked-signal.component';
+import { TemplateFormComponent } from './components/template-form/template-form.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'data-binding', pathMatch: 'full'},
@@ -19,5 +20,6 @@ export const routes: Routes = [
     {path:'ng-style', component: NgStyleComponent},
     {path:'control-flow', component: ControlStetmentComponent},
     {path: 'signal', component: SignalComponent},
-    {path: 'linked-signal', component: LinkedSignalComponent}
+    {path: 'linked-signal', component: LinkedSignalComponent},
+    {path: 'template-form', component: TemplateFormComponent}
 ];

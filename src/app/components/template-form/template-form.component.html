@@ -1,0 +1,174 @@
+<div class="container mt-4">
+
+    <form class="form" #form="ngForm">
+        <div class="row">
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">First Name <span class="text-danger">*</span></label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    #fname="ngModel" 
+                    name="firstName" 
+                    [(ngModel)]="userObj.firstName" 
+                    required
+                />
+                <div *ngIf="fname.touched && fname.dirty" class="text-danger">
+                    <span *ngIf="fname.errors?.['required']">This field is required.</span>
+                </div>
+            </div>
+
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">Last Name</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    #lname="ngModel" 
+                    minlength="4" 
+                    name="lastName" 
+                    [(ngModel)]="userObj.lastName" 
+                    required
+                />
+                <div *ngIf="lname.touched && lname.dirty" class="text-danger">
+                    <span *ngIf="lname.errors?.['required']">This field is required.</span>
+                    <span *ngIf="lname.errors?.['minlength']">Minimum 4 characters are required.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">Email</label>
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    name="email" 
+                    [(ngModel)]="userObj.email"
+                    #email="ngModel"
+                    email
+                />
+                <div *ngIf="email.touched && email.dirty" class="text-danger">
+                    <span *ngIf="email.errors?.['email']">Please enter a valid email address.</span>
+                </div>
+            </div>
+
+            <div class="mb-3 col-sm-4">
+                <label for="age" class="form-label">Age</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    name="age" 
+                    [(ngModel)]="userObj.age"
+                    #age="ngModel" 
+                    [min]="18" 
+                    [max]="100"
+                />
+                <div *ngIf="age.touched && age.dirty" class="text-danger">
+                    <span *ngIf="age.errors?.['min']">Age must be at least 18.</span>
+                    <span *ngIf="age.errors?.['max']">Age must be less than 100.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">Country</label>
+                <select 
+                    class="form-select" 
+                    name="country" 
+                    [(ngModel)]="userObj.country"
+                    #country="ngModel"
+                    (change)="onCountryChange()"
+                    required
+                >
+                    <option value="">Choose...</option>
+                    <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                </select>
+                <div *ngIf="country.touched && country.dirty" class="text-danger">
+                    <span *ngIf="country.errors?.['required']">Please select a country.</span>
+                </div>
+            </div>
+
+
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">State</label>
+                <select 
+                    class="form-select" 
+                    name="state" 
+                    [(ngModel)]="userObj.state"
+                    #state="ngModel"
+                    (change)="onStateChange()"
+                    required
+                >
+                    <option value="">Choose...</option>
+                    <option *ngFor="let state of getStatesForCountry(userObj.country)" [value]="state">{{ state }}</option>
+                </select>
+                <div *ngIf="state.touched && state.dirty" class="text-danger">
+                    <span *ngIf="state.errors?.['required']">Please select a state.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">City</label>
+                <select 
+                    class="form-select" 
+                    name="city" 
+                    [(ngModel)]="userObj.city"
+                    #city="ngModel"
+                    required
+                >
+                    <option value="">Choose...</option>
+                    <option *ngFor="let city of getCitiesForState(userObj.state)" [value]="city">{{ city }}</option>
+                </select>
+                <div *ngIf="city.touched && city.dirty" class="text-danger">
+                    <span *ngIf="city.errors?.['required']">Please select a city.</span>
+                </div>
+            </div>
+
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">Zipcode</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    name="zipcode" 
+                    [(ngModel)]="userObj.zipcode"
+                    #zipcode="ngModel" 
+                    [min]="100000" 
+                    [max]="999999"
+                />
+                <div *ngIf="zipcode.touched && zipcode.dirty" class="text-danger">
+                    <span *ngIf="zipcode.errors?.['min']">Zipcode must be a 6-digit number.</span>
+                    <span *ngIf="zipcode.errors?.['max']">Zipcode must be a 6-digit number.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input 
+                type="checkbox" 
+                class="form-check-input" 
+                name="isTermsAggree" 
+                [(ngModel)]="userObj.isTermsAggree"
+                #isTermsAggree="ngModel"
+                required
+            />
+            <label class="form-check-label">Agree to terms & conditions</label>
+            <div *ngIf="isTermsAggree.touched && isTermsAggree.dirty" class="text-danger">
+                <span *ngIf="isTermsAggree.errors?.['required']">You must agree to the terms and conditions.</span>
+            </div>
+        </div>
+
+        <button 
+            type="button" 
+            class="btn btn-primary" 
+            [disabled]="form.invalid" 
+            (click)="onSave()"
+        >
+            Submit
+        </button>
+    </form>
+</div>
