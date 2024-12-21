@@ -7,6 +7,7 @@ import { NgIfComponent } from './components/ng-if/ng-if.component';
 import { NgForComponent } from './components/ng-for/ng-for.component';
 import { ControlStetmentComponent } from './components/control-stetment/control-stetment.component';
 import { SignalComponent } from './components/signal/signal.component';
+import { LinkedSignalComponent } from './components/linked-signal/linked-signal.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'data-binding', pathMatch: 'full'},
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path:'ng-class', component: NgClassComponent},
     {path:'ng-style', component: NgStyleComponent},
     {path:'control-flow', component: ControlStetmentComponent},
-    {path: 'signal', component: SignalComponent}
+    {path: 'signal', component: SignalComponent},
+    {path: 'linked-signal', component: LinkedSignalComponent}
 ];
