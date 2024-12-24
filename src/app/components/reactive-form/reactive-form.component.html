@@ -1,6 +1,6 @@
 <p>reactive-form works!</p>
 <div class="container mt-4">
-    <form class="form">
+    <form class="form" (ngSubmit)="onUserSave()" [formGroup]="useForm">
         <div class="row">
             <div class="mb-3 col-sm-4">
                 <label class="form-label">First Name <span class="text-danger">*</span></label>
@@ -8,6 +8,7 @@
                     type="text" 
                     class="form-control" 
                     name="firstName" 
+                    formControlName="firstName"
                     required
                     />
                 <div class="text-danger">
@@ -21,6 +22,7 @@
                     class="form-control" 
                     minlength="4" 
                     name="lastName" 
+                    formControlName="lastName"
                     required
                     />
                 <div  class="text-danger">
@@ -35,6 +37,7 @@
                     type="email" 
                     class="form-control" 
                     name="email" 
+                    formControlName="email"
                     />
             </div>
             <div class="mb-3 col-sm-4">
@@ -43,6 +46,7 @@
                     type="number" 
                     class="form-control" 
                     name="age" 
+                    formControlName="age"
                     />
             </div>
         </div>
@@ -52,6 +56,7 @@
                 <select 
                     class="form-select" 
                     name="country" 
+                    formControlName="country"
                     required
                     >
                     <option value="">Choose...</option>
@@ -63,6 +68,7 @@
                 <select 
                     class="form-select" 
                     name="state" 
+                    formControlName="state"
                     required
                     >
                     <option value="">Choose...</option>
@@ -78,9 +84,13 @@
                 <select 
                     class="form-select" 
                     name="city" 
+                    formControlName="city"
                     required
                     >
                     <option value="">Choose...</option>
+                    <option value="New Delhi">New Delhi</option>
+                    <option value="kolkata">kolkata</option>
+                    <option value="Panji">Panji</option>
                 </select>
             </div>
             <div class="mb-3 col-sm-4">
@@ -89,6 +99,7 @@
                     type="number" 
                     class="form-control" 
                     name="zipcode" 
+                    formControlName="zipcode"
                     />
             </div>
         </div>
@@ -97,11 +108,12 @@
                 type="checkbox" 
                 class="form-check-input" 
                 name="isTermsAggree" 
+                formControlName="isTermsAggree"
                 />
             <label class="form-check-label">Agree to terms & conditions</label>
         </div>
         <button 
-            type="button" 
+            type="submit" 
             class="btn btn-primary" 
             >
         Submit

@@ -19,4 +19,8 @@ export class ReactiveFormComponent {
     zipcode: new FormControl(""),
     isTermsAggree:  new FormControl(false)
   })
+
+  onUserSave(){
+    console.log(this.useForm.value);
+  }
 }
