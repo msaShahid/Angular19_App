@@ -1,7 +1,5 @@
 <p>reactive-form works!</p>
-
 <div class="container mt-4">
-
     <form class="form">
         <div class="row">
             <div class="mb-3 col-sm-4">
@@ -11,12 +9,11 @@
                     class="form-control" 
                     name="firstName" 
                     required
-                />
+                    />
                 <div class="text-danger">
                     <span>This field is required.</span>
                 </div>
             </div>
-
             <div class="mb-3 col-sm-4">
                 <label class="form-label">Last Name</label>
                 <input 
@@ -25,19 +22,89 @@
                     minlength="4" 
                     name="lastName" 
                     required
-                />
+                    />
                 <div  class="text-danger">
                     <span>This field is required.</span>
                 </div>
             </div>
         </div>
-
-
+        <div class="row">
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">Email</label>
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    name="email" 
+                    />
+            </div>
+            <div class="mb-3 col-sm-4">
+                <label for="age" class="form-label">Age</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    name="age" 
+                    />
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">Country</label>
+                <select 
+                    class="form-select" 
+                    name="country" 
+                    required
+                    >
+                    <option value="">Choose...</option>
+                    <option value="india">India</option>
+                </select>
+            </div>
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">State</label>
+                <select 
+                    class="form-select" 
+                    name="state" 
+                    required
+                    >
+                    <option value="">Choose...</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Delhi">Delhi</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">City</label>
+                <select 
+                    class="form-select" 
+                    name="city" 
+                    required
+                    >
+                    <option value="">Choose...</option>
+                </select>
+            </div>
+            <div class="mb-3 col-sm-4">
+                <label class="form-label">Zipcode</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    name="zipcode" 
+                    />
+            </div>
+        </div>
+        <div class="mb-3 form-check">
+            <input 
+                type="checkbox" 
+                class="form-check-input" 
+                name="isTermsAggree" 
+                />
+            <label class="form-check-label">Agree to terms & conditions</label>
+        </div>
         <button 
             type="button" 
             class="btn btn-primary" 
-        >
-            Submit
+            >
+        Submit
         </button>
     </form>
 </div>
