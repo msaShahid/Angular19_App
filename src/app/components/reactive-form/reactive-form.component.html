@@ -1,122 +1,173 @@
-<p>reactive-form works!</p>
+<p>Reactive form works!</p>
 <div class="container mt-4">
-    <form class="form" (ngSubmit)="onUserSave()" [formGroup]="useForm">
-        <div class="row">
-            <div class="mb-3 col-sm-4">
-                <label class="form-label">First Name <span class="text-danger">*</span></label>
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    name="firstName" 
-                    formControlName="firstName"
-                    required
-                    />
-                <div class="text-danger">
-                    <span>This field is required.</span>
-                </div>
-            </div>
-            <div class="mb-3 col-sm-4">
-                <label class="form-label">Last Name</label>
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    minlength="4" 
-                    name="lastName" 
-                    formControlName="lastName"
-                    required
-                    />
-                <div  class="text-danger">
-                    <span>This field is required.</span>
-                </div>
-            </div>
+  <form class="form" (ngSubmit)="onUserSave()" [formGroup]="useForm">
+    <div class="row">
+      <div class="mb-3 col-sm-4">
+        <label class="form-label">First Name <span class="text-danger">*</span></label>
+        <input 
+          type="text" 
+          class="form-control" 
+          name="firstName" 
+          formControlName="firstName" 
+        />
+        <div *ngIf="useForm.controls['firstName'].touched && useForm.controls['firstName'].invalid" class="text-danger">
+          <div *ngIf="useForm.controls['firstName'].errors?.['required']">
+            First name is required
+          </div>
+          <div *ngIf="useForm.controls['firstName'].errors?.['minlength']">
+            First name must be at least 3 characters
+          </div>
         </div>
-        <div class="row">
-            <div class="mb-3 col-sm-4">
-                <label class="form-label">Email</label>
-                <input 
-                    type="email" 
-                    class="form-control" 
-                    name="email" 
-                    formControlName="email"
-                    />
-            </div>
-            <div class="mb-3 col-sm-4">
-                <label for="age" class="form-label">Age</label>
-                <input 
-                    type="number" 
-                    class="form-control" 
-                    name="age" 
-                    formControlName="age"
-                    />
-            </div>
+      </div>
+      
+      <div class="mb-3 col-sm-4">
+        <label class="form-label">Last Name <span class="text-danger">*</span></label>
+        <input 
+          type="text" 
+          class="form-control" 
+          name="lastName" 
+          formControlName="lastName" 
+        />
+        <div *ngIf="useForm.controls['lastName'].touched && useForm.controls['lastName'].invalid" class="text-danger">
+          <div *ngIf="useForm.controls['lastName'].errors?.['required']">
+            Last name is required
+          </div>
+          <div *ngIf="useForm.controls['lastName'].errors?.['minlength']">
+            Last name must be at least 5 characters
+          </div>
         </div>
-        <div class="row">
-            <div class="mb-3 col-sm-4">
-                <label class="form-label">Country</label>
-                <select 
-                    class="form-select" 
-                    name="country" 
-                    formControlName="country"
-                    required
-                    >
-                    <option value="">Choose...</option>
-                    <option value="india">India</option>
-                </select>
-            </div>
-            <div class="mb-3 col-sm-4">
-                <label class="form-label">State</label>
-                <select 
-                    class="form-select" 
-                    name="state" 
-                    formControlName="state"
-                    required
-                    >
-                    <option value="">Choose...</option>
-                    <option value="West Bengal">West Bengal</option>
-                    <option value="Goa">Goa</option>
-                    <option value="Delhi">Delhi</option>
-                </select>
-            </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="mb-3 col-sm-4">
+        <label class="form-label">Email</label>
+        <input 
+          type="email" 
+          class="form-control" 
+          name="email" 
+          formControlName="email" 
+        />
+        <div *ngIf="useForm.controls['email'].touched && useForm.controls['email'].invalid" class="text-danger">
+          <div *ngIf="useForm.controls['email'].errors?.['email']">
+            Please enter a valid email address
+          </div>
         </div>
-        <div class="row">
-            <div class="mb-3 col-sm-4">
-                <label class="form-label">City</label>
-                <select 
-                    class="form-select" 
-                    name="city" 
-                    formControlName="city"
-                    required
-                    >
-                    <option value="">Choose...</option>
-                    <option value="New Delhi">New Delhi</option>
-                    <option value="kolkata">kolkata</option>
-                    <option value="Panji">Panji</option>
-                </select>
-            </div>
-            <div class="mb-3 col-sm-4">
-                <label class="form-label">Zipcode</label>
-                <input 
-                    type="number" 
-                    class="form-control" 
-                    name="zipcode" 
-                    formControlName="zipcode"
-                    />
-            </div>
+      </div>
+
+      <div class="mb-3 col-sm-4">
+        <label for="age" class="form-label">Age</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          name="age" 
+          formControlName="age" 
+        />
+        <div *ngIf="useForm.controls['age'].touched && useForm.controls['age'].invalid" class="text-danger">
+          <div *ngIf="useForm.controls['age'].errors?.['required']">
+            Age is required
+          </div>
+          <div *ngIf="useForm.controls['age'].errors?.['min']">
+            Age must be at least 18
+          </div>
+          <div *ngIf="useForm.controls['age'].errors?.['max']">
+            Age must be below 100
+          </div>
         </div>
-        <div class="mb-3 form-check">
-            <input 
-                type="checkbox" 
-                class="form-check-input" 
-                name="isTermsAggree" 
-                formControlName="isTermsAggree"
-                />
-            <label class="form-check-label">Agree to terms & conditions</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mb-3 col-sm-4">
+        <label class="form-label">Country</label>
+        <select 
+          class="form-select" 
+          name="country" 
+          formControlName="country" 
+        >
+          <option value="">Choose...</option>
+          <option value="india">India</option>
+        </select>
+        <div *ngIf="useForm.controls['country'].touched && useForm.controls['country'].invalid" class="text-danger">
+          Country is required
         </div>
-        <button 
-            type="submit" 
-            class="btn btn-primary" 
-            >
-        Submit
-        </button>
-    </form>
+      </div>
+
+      <div class="mb-3 col-sm-4">
+        <label class="form-label">State</label>
+        <select 
+          class="form-select" 
+          name="state" 
+          formControlName="state" 
+        >
+          <option value="">Choose...</option>
+          <option value="West Bengal">West Bengal</option>
+          <option value="Goa">Goa</option>
+          <option value="Delhi">Delhi</option>
+        </select>
+        <div *ngIf="useForm.controls['state'].touched && useForm.controls['state'].invalid" class="text-danger">
+          State is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mb-3 col-sm-4">
+        <label class="form-label">City</label>
+        <select 
+          class="form-select" 
+          name="city" 
+          formControlName="city" 
+        >
+          <option value="">Choose...</option>
+          <option value="New Delhi">New Delhi</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Panji">Panji</option>
+        </select>
+        <div *ngIf="useForm.controls['city'].touched && useForm.controls['city'].invalid" class="text-danger">
+          City is required
+        </div>
+      </div>
+
+      <div class="mb-3 col-sm-4">
+        <label class="form-label">Zipcode</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          name="zipcode" 
+          formControlName="zipcode" 
+        />
+        <div *ngIf="useForm.controls['zipcode'].touched && useForm.controls['zipcode'].invalid" class="text-danger">
+            <div *ngIf="useForm.controls['zipcode'].errors?.['required']">
+              Zipcode is required
+            </div>
+            <div *ngIf="useForm.controls['zipcode'].errors?.['pattern']">
+              Zipcode must be exactly 6 digits
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="mb-3 form-check">
+      <input 
+        type="checkbox" 
+        class="form-check-input" 
+        name="isTermsAggree" 
+        formControlName="isTermsAggree"
+      />
+      <label class="form-check-label">Agree to terms & conditions</label>
+      <div *ngIf="useForm.controls['isTermsAggree'].touched && useForm.controls['isTermsAggree'].invalid" class="text-danger">
+        You must agree to the terms and conditions
+      </div>
+    </div>
+
+    <button 
+      type="submit" 
+      class="btn btn-primary" 
+      [disabled]="useForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
 </div>
