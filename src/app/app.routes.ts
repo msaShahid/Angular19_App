@@ -9,6 +9,7 @@ import { ControlStetmentComponent } from './components/control-stetment/control-
 import { SignalComponent } from './components/signal/signal.component';
 import { LinkedSignalComponent } from './components/linked-signal/linked-signal.component';
 import { TemplateFormComponent } from './components/template-form/template-form.component';
+import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'data-binding', pathMatch: 'full'},
@@ -21,5 +22,6 @@ export const routes: Routes = [
     {path:'control-flow', component: ControlStetmentComponent},
     {path: 'signal', component: SignalComponent},
     {path: 'linked-signal', component: LinkedSignalComponent},
-    {path: 'template-form', component: TemplateFormComponent}
+    {path: 'template-form', component: TemplateFormComponent},
+    {path: 'reactive-form', component: ReactiveFormComponent}
 ];
