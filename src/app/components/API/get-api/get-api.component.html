@@ -1,1 +1,42 @@
-<p>get-api works!</p>
+<h3>Get Api</h3>
+
+<div class="container mt-2 mx-4">
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary btn-sm" (click)="getUser()">Get Api</button>
+                <table class="table table-bordered mt-5">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Sl. No.</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Street</th>
+                            <th scope="col">Suite</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Zipcode</th>
+                            <th scope="col">Latitude</th>
+                            <th scope="col">Longitude</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of userList; track $index) {
+                            <tr>
+                                <td>{{ $index+1 }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.username }}</td>
+                                <td>{{ item.email }}</td>
+                                <td>{{ item.address.street }}</td>
+                                <td>{{ item.address.suite }}</td>
+                                <td>{{ item.address.city }}</td>
+                                <td>{{ item.address.zipcode }}</td>
+                                <td>{{ item.address.geo.lat }}</td>
+                                <td>{{ item.address.geo.lng }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
