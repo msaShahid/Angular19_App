@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MasterService } from '../../../service/master.service';
+import { IUserDetails } from '../../../model/interface/master';
 
 @Component({
   selector: 'app-get-api',
@@ -9,12 +11,16 @@ import { Component } from '@angular/core';
 })
 export class GetApiComponent {
 
-  userList: any [] = [];
+  userList: IUserDetails[] = [];
 
-  constructor(private http: HttpClient){}
+  constructor(private masterService: MasterService){}
 
-  getUser(){
-    this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((response:any) => {
+  ngOnInit(): void {
+    this.getUserDetails()
+  }
+
+  getUserDetails(){
+    this.masterService.getUser().subscribe((response: IUserDetails[]) => {
       this.userList = response;
     })
   }
