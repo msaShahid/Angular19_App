@@ -1,4 +1,3 @@
-
 export interface IUserDetails {
     id: number;
     name: string;

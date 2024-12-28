@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MasterService } from '../../../service/master.service';
 import { IUserDetails } from '../../../model/interface/master';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-get-api',
@@ -20,9 +21,14 @@ export class GetApiComponent {
   }
 
   getUserDetails(){
-    this.masterService.getUser().subscribe((response: IUserDetails[]) => {
-      this.userList = response;
-    })
+    this.masterService.getUser().subscribe({
+      next: (response: IUserDetails[]) => {
+        this.userList = response;
+      },
+      error: (error: any) => {
+        console.error(error); 
+      }
+    });
   }
 
 }
