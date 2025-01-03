@@ -28,6 +28,9 @@ export class GetApiComponent {
     this.masterService.getproduct().subscribe({
       next: (response) => {
        this.productList = response
+      },
+      error: (error: any) => {
+        console.error('Error fetching data : ', error);
       }
     })
   }
