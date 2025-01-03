@@ -18,6 +18,12 @@ export class MasterService {
     )
   }
 
+  getproduct(){
+    return this.http.get("https://fake-store-api.mock.beeceptor.com/api/products").pipe(
+      catchError(this.handleError)
+    )
+  }
+
   private handleError(error: HttpErrorResponse) {
 
     let errorMessage = 'Something went wrong, please try again later.';
