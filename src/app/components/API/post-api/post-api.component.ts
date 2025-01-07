@@ -34,6 +34,7 @@ export class PostApiComponent {
      // debugger;
       if(res.result){
         alert("Car Added Successfully");
+        this.getAllCarList();
       }else{
         alert(res.message);
       }
