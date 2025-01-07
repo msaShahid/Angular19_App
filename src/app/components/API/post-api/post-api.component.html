@@ -7,6 +7,9 @@
                         <div class="col-6 text-white">
                             <strong>Car List</strong> 
                         </div>
+                        <div class="col-6 text-white text-end">
+                            <button class="btn btn-sm btn-success" (click)="getAllCarList()">Load Cars</button> 
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -21,7 +24,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Data rows go here -->
+                            @for (item of carList; track $index) {
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ item.brand }}</td>
+                                    <td>{{ item.model }}</td>
+                                    <td>{{ item.regNo }}</td>
+                                    <td>{{ item.dailyRate }}</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
