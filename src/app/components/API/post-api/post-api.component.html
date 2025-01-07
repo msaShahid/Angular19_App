@@ -21,6 +21,7 @@
                                 <th>Model</th>
                                 <th>Reqgister No.</th>
                                 <th>Daily rate</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,6 +34,7 @@
                                     <td>{{ item.dailyRate }}</td>
                                     <td>
                                         <button class="btn btn-sm btn-warning" (click)="onEdit(item)">Edit</button>
+                                        <button class="btn btn-sm btn-danger mx-2" (click)="onDelete(item.carId)">Delete</button>
                                     </td>
                                 </tr>
                             }

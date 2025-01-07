@@ -55,5 +55,20 @@ export class PostApiComponent {
       }
     })
   }
+  onDelete(id: number){
+    const wantToDelete = confirm("Are you sure to delete this data?");
+   // debugger;
+    if(wantToDelete == true){
+        this.http.delete("https://freeapi.miniprojectideas.com/api/CarRentalApp/DeleteCarbyCarId?carid=" + id).subscribe((res:any) => {
+          if(res.result){
+            alert("Car deteled Successfully");
+            this.getAllCarList();
+          }else{
+            alert(res.message);
+          }
+        })
+    }
+    
+  }
 
 }
