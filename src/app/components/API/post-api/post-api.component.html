@@ -31,6 +31,9 @@
                                     <td>{{ item.model }}</td>
                                     <td>{{ item.regNo }}</td>
                                     <td>{{ item.dailyRate }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning" (click)="onEdit(item)">Edit</button>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
@@ -52,43 +55,48 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="reg_no" class="form-label">Register No.</label>
-                                <input type="text" class="form-control" [(ngModel)]="carObj.RegNo" name="reg_no" placeholder="Enter Register No">
+                                <input type="text" class="form-control" [(ngModel)]="carObj.regNo" name="regNo" placeholder="Enter Register No">
                             </div>
                             <div class="col-md-6">
                                 <label for="brand" class="form-label">Brand</label>
-                                <input type="text" class="form-control" [(ngModel)]="carObj.Brand" name="brand" placeholder="Enter brand">
+                                <input type="text" class="form-control" [(ngModel)]="carObj.brand" name="brand" placeholder="Enter brand">
                             </div>
                             
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="model" class="form-label">Model</label>
-                                <input type="text" class="form-control" [(ngModel)]="carObj.Model" name="model" placeholder="Enter model">
+                                <input type="text" class="form-control" [(ngModel)]="carObj.model" name="model" placeholder="Enter model">
                             </div>
                             <div class="col-md-6">
                                 <label for="year" class="form-label">Year</label>
-                                <input type="test" class="form-control" [(ngModel)]="carObj.Year" name="year" placeholder="Enter Year">
+                                <input type="test" class="form-control" [(ngModel)]="carObj.year" name="year" placeholder="Enter Year">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="color" class="form-label">Color</label>
-                                <input type="text" class="form-control" [(ngModel)]="carObj.Color" name="color" placeholder="Enter color">
+                                <input type="text" class="form-control" [(ngModel)]="carObj.color" name="color" placeholder="Enter color">
                             </div>
                             <div class="col-md-6">
                                 <label for="rate" class="form-label">Daily Rate</label>
-                                <input type="text" class="form-control" [(ngModel)]="carObj.DailyRate" name="rate" placeholder="Enter role">
+                                <input type="text" class="form-control" [(ngModel)]="carObj.dailyRate" name="dailyRate" placeholder="Enter role">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="car_image" class="form-label">Car Image URL</label>
-                                <input type="text" class="form-control" [(ngModel)]="carObj.CarImage" name="car_image" placeholder="Enter car_image">
+                                <input type="text" class="form-control" [(ngModel)]="carObj.carImage" name="carImage" placeholder="Enter car_image">
                             </div>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-warning mt-3 mx-3">Reset Form</button>
-                            <button type="submit" class="btn btn-success mt-3" (click)="saveNewCar()">Save Car</button>
+                            @if(carObj.carId == 0){
+                                <button type="submit" class="btn btn-success mt-3" (click)="saveNewCar()">Save Car</button>
+                            } @else {
+                                <button type="submit" class="btn btn-success mt-3" (click)="updateCar()">Update Car</button>
+                            }
+                            
                         </div>
                         
                     </form>

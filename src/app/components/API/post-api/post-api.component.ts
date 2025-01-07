@@ -12,14 +12,14 @@ export class PostApiComponent {
 
   carList: any[] =[]
   carObj: any = {
-    "CarId": 0,
-    "Brand": "",
-    "Model": "",
-    "Year": "",
-    "Color": "",
-    "DailyRate": "",
-    "CarImage": "",
-    "RegNo": ""
+    "carId": 0,
+    "brand": "",
+    "model": "",
+    "year": "",
+    "color": "",
+    "dailyRate": "",
+    "carImage": "",
+    "regNo": ""
   }
   http = inject(HttpClient);
 
@@ -41,5 +41,19 @@ export class PostApiComponent {
     })
   }
 
+  onEdit(data: any){
+    this.carObj = data;
+  }
+
+  updateCar(){
+    this.http.put("https://freeapi.miniprojectideas.com/api/CarRentalApp/UpdateCar", this.carObj).subscribe((res:any) => {
+      if(res.result){
+        alert("Car Update Successfully");
+        this.getAllCarList();
+      }else{
+        alert(res.message);
+      }
+    })
+  }
 
 }
