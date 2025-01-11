@@ -1,1 +1,96 @@
-<p>customer works!</p>
+<div class="container-fluname my-4">
+    <div class="row">
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <div class="row">
+                        <div class="col-6 text-white">
+                            <strong>Customer Section</strong> 
+                        </div>
+                        <div class="col-6 text-white text-end">
+                            <button class="btn btn-sm btn-success" >Get Customer List</button> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sl No. </th>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                                <th>City</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of customerDetails; track $index) {
+                                <tr>
+                                    <td>{{ $index +1 }}</td>
+                                    <td>{{ item.customerName }}</td>
+                                    <td>{{ item.mobileNo }}</td>
+                                    <td>{{ item.email }}</td>
+                                    <td>{{ item.customerCity }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning m-1">Edit</button>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <div class="row">
+                        <div class="col-6 text-white">
+                            <strong>Create New Customer</strong> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="mb-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="Customer_name" class="form-label">Customer Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="customerObject.customerName" name="customerName" placeholder="Enter Customer Name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="mobile" class="form-label">Mobile</label>
+                                <input type="text" class="form-control" [(ngModel)]="customerObject.customerMobile"  name="customerMobile" placeholder="Enter mobile">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="test" class="form-control" [(ngModel)]="customerObject.customerEmail" name="customerEmail" placeholder="Enter email">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" [(ngModel)]="customerObject.customerCity" name="customerCity" placeholder="Enter city">
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-warning mt-3 mx-3">Reset Form</button>
+                            <button type="submit" class="btn btn-success mt-3">Save </button>
+                            
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+   
+
+  
+</div>
