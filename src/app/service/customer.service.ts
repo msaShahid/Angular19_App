@@ -7,10 +7,17 @@ import { catchError, throwError } from 'rxjs';
 })
 export class CustomerService {
 
+  apiUrl = "https://freeapi.miniprojectideas.com/api/carRentalApp";
   constructor(private http: HttpClient) { }
 
   getCustomers(){
-    return this.http.get("https://freeapi.miniprojectideas.com/api/carRentalApp/GetCustomers").pipe(
+    return this.http.get(`${this.apiUrl}/GetCustomers`).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  createNewCustomer(obj: any){
+    return this.http.post(`${this.apiUrl}/CreateNewCustomer`, obj).pipe(
       catchError(this.handleError)
     )
   }

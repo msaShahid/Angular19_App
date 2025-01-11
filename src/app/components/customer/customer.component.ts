@@ -13,8 +13,8 @@ export class CustomerComponent {
   customerObject: any = {
     "customerId": 0,
     "customerName": "",
-    "customerMobile": "",
-    "customerEmail": "",
+    "mobileNo": "",
+    "email": "",
     "customerCity": ""
   };
 
@@ -28,6 +28,19 @@ export class CustomerComponent {
     this.customerService.getCustomers().subscribe((res: any) =>{
       this.customerDetails = res.data;
     });
+  }
+
+  saveCustomer(){
+    debugger;
+    this.customerService.createNewCustomer(this.customerObject).subscribe((res:any) => {
+      if(res.result){
+        debugger;
+        alert("Customer created successfully");
+        this.loadCustomerData();
+      }else{
+        alert("Failed to create customer");
+      }
+    })
   }
 
 
