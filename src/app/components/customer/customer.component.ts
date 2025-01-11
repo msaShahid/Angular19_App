@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { CustomerService } from './../../service/customer.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -20,15 +20,16 @@ export class CustomerComponent {
 
   customerDetails: any [] = [];
 
-  constructor(private http: HttpClient){
-    this.getCustomer();
+  constructor(private customerService: CustomerService) { 
+    this.loadCustomerData();
   }
 
-  getCustomer(){
-    this.http.get("https://freeapi.miniprojectideas.com/api/carRentalApp/GetCustomers").subscribe((res: any) => {
+  loadCustomerData(){
+    this.customerService.getCustomers().subscribe((res: any) =>{
       this.customerDetails = res.data;
-    })
-
+    });
   }
+
+
 
 }
