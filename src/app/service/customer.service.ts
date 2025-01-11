@@ -22,18 +22,39 @@ export class CustomerService {
     )
   }
 
+  updateExistingCustomer(obj: any){
+    return this.http.put(`${this.apiUrl}/UpdateCustomer`, obj).pipe(
+      catchError(this.handleError)
+    )
+  }
 
-  private handleError(error: HttpErrorResponse) {
+  deleteCustomer(id: number){
+    return this.http.delete(`${this.apiUrl}/DeletCustomerById?id=${id}`).pipe(
+      catchError(this.handleError)
+    )
+  }
 
-    let errorMessage = 'Something went wrong, please try again later.';
+  private handleError(error: any) {
+
+    let errorMessage = 'An unknown error occurred!';
     
-    if (error.status === 404) {
-      errorMessage = 'The requested resource could not be found.';
-    } else if (error.status === 500) {
-      errorMessage = 'There was an issue with the server, please try again later.';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
     } else {
-      console.error('Unknown Error: ', error.message);
+      if (error.status === 0) {
+        errorMessage = 'Network error. Please check your connection.';
+      } else if (error.status === 400) {
+        errorMessage = 'Bad request. Please check the customer ID.';
+      } else if (error.status === 404) {
+        errorMessage = 'Customer not found.';
+      } else if (error.status === 500) {
+        errorMessage = 'Internal server error. Please try again later.';
+      } else {
+        errorMessage = `Error: ${error.message || error.statusText}`;
+      }
     }
+    
+    console.error('API Error: ', error);
     return throwError(() => new Error(errorMessage));
   }
 
