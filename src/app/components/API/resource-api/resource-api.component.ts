@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, resource } from '@angular/core';
 
 @Component({
   selector: 'app-resource-api',
@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './resource-api.component.css'
 })
 export class ResourceApiComponent {
+
+  userList = resource({
+    loader: async () => {
+      const res = await fetch('https://jsonplaceholder.typicode.com/users');
+      return await (res.json() as Promise<any[]>);
+    }
+  })
+
 
 }

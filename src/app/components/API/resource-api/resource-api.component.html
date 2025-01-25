@@ -1,1 +1,29 @@
-<p>resource-api works!</p>
+<div class="container mt-2 mx-4">
+    <h3>resource-api works!</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <h3> </h3>
+            <button class="btn btn-primary btn-sm">Value : {{ userList.hasValue() }}</button>
+
+                <table class="table table-bordered mt-5">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Sl. No.</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of userList.value(); track $index) {
+                            <tr>
+                                <td>{{ $index+1 }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.username }}</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
