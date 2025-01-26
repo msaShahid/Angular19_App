@@ -1,8 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component, resource } from '@angular/core';
 
 @Component({
   selector: 'app-resource-api',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './resource-api.component.html',
   styleUrl: './resource-api.component.css'
 })
