@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './post-api.component.html',
   styleUrl: './post-api.component.css'
 })
-export class PostApiComponent {
+export class PostApiComponent implements OnInit {
 
   carList: any[] =[]
   carObj: any = {
@@ -22,6 +22,11 @@ export class PostApiComponent {
     "regNo": ""
   }
   http = inject(HttpClient);
+
+  ngOnInit(): void {
+    console.log('ngOnInut is called');
+    this.getAllCarList();
+  }
 
   getAllCarList(){
     this.http.get("https://freeapi.miniprojectideas.com/api/CarRentalApp/GetCars").subscribe((res:any) =>{
