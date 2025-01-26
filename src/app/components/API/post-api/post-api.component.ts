@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './post-api.component.html',
   styleUrl: './post-api.component.css'
 })
-export class PostApiComponent implements OnInit {
+export class PostApiComponent implements OnInit, AfterViewInit {
 
   carList: any[] =[]
   carObj: any = {
@@ -26,6 +26,9 @@ export class PostApiComponent implements OnInit {
   ngOnInit(): void {
     console.log('ngOnInut is called');
     this.getAllCarList();
+  }
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit is called', performance.now());
   }
 
   getAllCarList(){

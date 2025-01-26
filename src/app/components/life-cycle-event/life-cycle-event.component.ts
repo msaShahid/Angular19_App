@@ -25,7 +25,7 @@ export class LifeCycleEventComponent implements OnInit, AfterViewInit, AfterView
   }
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit.');
+    console.log('ngAfterViewInit.', performance.now());
   }
 
   ngAfterViewChecked(): void {
