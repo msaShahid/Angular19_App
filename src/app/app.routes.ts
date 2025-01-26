@@ -14,6 +14,7 @@ import { GetApiComponent } from './components/API/get-api/get-api.component';
 import { PostApiComponent } from './components/API/post-api/post-api.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { ResourceApiComponent } from './components/API/resource-api/resource-api.component';
+import { LifeCycleEventComponent } from './components/life-cycle-event/life-cycle-event.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'data-binding', pathMatch: 'full'},
@@ -31,5 +32,6 @@ export const routes: Routes = [
     {path: 'get-api', component: GetApiComponent},
     {path:'post-api', component: PostApiComponent},
     {path: 'customer', component: CustomerComponent},
-    {path: 'resource-api', component: ResourceApiComponent}
+    {path: 'resource-api', component: ResourceApiComponent},
+    {path: 'life-cycle-event', component: LifeCycleEventComponent},
 ];
