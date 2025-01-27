@@ -1,3 +1,3 @@
 <div class="progress">
-    <div class="progress-bar" [ngStyle]="{width:progressValue+'%'}"></div>
+    <div class="progress-bar" [ngClass]="bgColor" role="progressbar" [ngStyle]="{width:progressValue+'%'}" aria-valuemin="0" aria-valuemax="100"> {{ progressValue }} %</div>
 </div>

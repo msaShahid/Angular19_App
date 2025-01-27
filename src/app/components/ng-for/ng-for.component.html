@@ -31,7 +31,7 @@
             </option>
         </select>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -40,6 +40,7 @@
                     <th>Employee Name</th>
                     <th>Employee Age</th>
                     <th>Employee City</th>
+                    <th>Employee Attendance</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +50,9 @@
                     <td>{{emp.name | customPipes}}</td>
                     <td>{{emp.age}}</td>
                     <td>{{emp.city | uppercase | customPipes}}</td>
+                    <td>
+                        <app-progrss-bar [bgColor]="getAttendanceClass(emp.attendance)" [progressValue]="emp.attendance"></app-progrss-bar>
+                    </td>
                 </tr>
             </tbody>
         </table>
