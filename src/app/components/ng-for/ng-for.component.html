@@ -1,18 +1,33 @@
 <p>ng-for works!</p>
 
-<div class="row">
-    <div class="col md-4">
-        <ul>
-            <li *ngFor="let city of cityList" > {{city}} </li>
-        </ul>
+<div class="container">
+    <div class="row">
+        <div class="col md-4">
+            <ul>
+                <li *ngFor="let city of cityList" > {{city}} </li>
+            </ul>
+        </div>
     </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            employeObject : {{ employeObject | json }}
+        </div>
+        <div class="col-sm-6">
+            current Date:  {{ currentDate | date: 'dd-MMMM-yyyy' }} <br>
+            current Date: {{ currentDate | date: 'dd-MMM-yyyy' }} <br>
+            current Time: {{ currentDate | date: 'hh:mm:ss' }} <br>
+        </div>
+    </div>
+    <br>
 </div>
+
 
 <div class="row">
     <div class="col-md-2">
         <select class="form-select" name="" id="">
             <option *ngFor="let emp of employeObject" [value]="emp.empid" >
-                 {{emp.name}} - {{emp.city}}
+                 {{emp.name | lowercase}} - {{emp.city | uppercase}}
             </option>
         </select>
     </div>
