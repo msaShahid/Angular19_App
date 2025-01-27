@@ -46,9 +46,9 @@
                 <tr *ngFor="let emp of employeObject; let sl = index">
                     <td>{{sl+1 }}</td>
                     <td>{{emp.empid}}</td>
-                    <td>{{emp.name}}</td>
+                    <td>{{emp.name | customPipes}}</td>
                     <td>{{emp.age}}</td>
-                    <td>{{emp.city}}</td>
+                    <td>{{emp.city | uppercase | customPipes}}</td>
                 </tr>
             </tbody>
         </table>
