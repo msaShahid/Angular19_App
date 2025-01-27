@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProgrssBarComponent } from "../common/progressbar/progrss-bar/progrss-bar.component";
 
 @Component({
   selector: 'app-data-binding',
-  imports: [FormsModule],
+  imports: [FormsModule, ProgrssBarComponent],
   templateUrl: './data-binding.component.html',
   styleUrl: './data-binding.component.css'
 })
