@@ -11,6 +11,7 @@ import { TabsComponent } from "../../common/tabs/tabs.component";
 })
 export class PostApiComponent implements OnInit, AfterViewInit {
 
+  currentTab: string = '';
   carList: any[] =[]
   carObj: any = {
     "carId": 0,
@@ -24,8 +25,12 @@ export class PostApiComponent implements OnInit, AfterViewInit {
   }
   http = inject(HttpClient);
 
+  onTabChange(tabName: string){
+    this.currentTab = tabName;
+  }
+
   ngOnInit(): void {
-    console.log('ngOnInut is called');
+    console.log('ngOnInit is called');
     this.getAllCarList();
   }
   ngAfterViewInit(): void {
