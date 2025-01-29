@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TabsComponent } from "../../common/tabs/tabs.component";
+import { Car } from '../../../model/class/car';
 
 @Component({
   selector: 'app-post-api',
@@ -13,16 +14,9 @@ export class PostApiComponent implements OnInit, AfterViewInit {
 
   currentTab: string = 'Car List';
   carList: any[] =[]
-  carObj: any = {
-    "carId": 0,
-    "brand": "",
-    "model": "",
-    "year": "",
-    "color": "",
-    "dailyRate": "",
-    "carImage": "",
-    "regNo": ""
-  }
+
+  carObj: Car = new Car();
+  
   http = inject(HttpClient);
 
   onTabChange(tabName: string){
