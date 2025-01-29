@@ -44,6 +44,7 @@ export class PostApiComponent implements OnInit, AfterViewInit {
       if(res.result){
         alert("Car Added Successfully");
         this.getAllCarList();
+        this.carObj = new Car();
       }else{
         alert(res.message);
       }
