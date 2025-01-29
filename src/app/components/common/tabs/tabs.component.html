@@ -1,5 +1,11 @@
 <div class="btn-group" role="group" aria-label="Basic example">
     @for (item of tabList; track $index) {
-        <button type="button" class="btn btn-primary mx-1 " (click)="onTabChange(item)">{{ item }}</button>
+        <button 
+            type="button" class="btn mx-1 " 
+            [ngClass]="currentTab == item ? 'btn-success': 'btn-primary'" 
+            (click)="onTabChange(item)"
+        >
+            {{ item }}
+        </button>
     }
 </div>
