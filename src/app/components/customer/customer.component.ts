@@ -2,14 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { CustomerService } from './../../service/customer.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TabsComponent } from "../common/tabs/tabs.component";
 
 @Component({
   selector: 'app-customer',
-  imports: [FormsModule],
+  imports: [FormsModule, TabsComponent],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css'
 })
 export class CustomerComponent {
+
+  customerTabs = ["Payment Info","Plan Info","Payment Info"]
 
   customerObject: any = {
     "customerId": 0,
