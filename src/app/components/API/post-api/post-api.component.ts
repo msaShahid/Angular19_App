@@ -11,7 +11,7 @@ import { TabsComponent } from "../../common/tabs/tabs.component";
 })
 export class PostApiComponent implements OnInit, AfterViewInit {
 
-  currentTab: string = '';
+  currentTab: string = 'Car List';
   carList: any[] =[]
   carObj: any = {
     "carId": 0,

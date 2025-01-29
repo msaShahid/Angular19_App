@@ -12,7 +12,7 @@ import { TabsComponent } from "../common/tabs/tabs.component";
 })
 export class CustomerComponent {
 
-  customerTabs = ["Payment Info","Plan Info","Payment Info"]
+  customerTabs = ["Payment Info","Plan Info","Payment Mode"]
 
   customerObject: any = {
     "customerId": 0,

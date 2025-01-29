@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
@@ -7,11 +7,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.css'
 })
-export class TabsComponent {
+export class TabsComponent implements OnInit {
 
   @Input() tabList: string[] = [];
 
   @Output() onTabClicked = new EventEmitter<string>()
+
+
+  ngOnInit(): void {
+    this.currentTab = this.tabList[0];
+  }
 
   currentTab: string = '';
 
