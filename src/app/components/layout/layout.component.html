@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="'admin'">Shahid</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Data Binding
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="'data-binding'">data binding</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Directive
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="'ng-if'">ng if</a></li>
+              <li><a class="dropdown-item" [routerLink]="'ng-for'">ng for</a></li>
+              <li><a class="dropdown-item" [routerLink]="'ng-class'">ng class</a></li>
+              <li><a class="dropdown-item" [routerLink]="'ng-style'">ng style</a></li>
+              <li><a class="dropdown-item" [routerLink]="'control-flow'">control flow</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Signal
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="'signal'">Signal</a></li>
+              <li><a class="dropdown-item" [routerLink]="'linked-signal'">Linked signal</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Forms
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="'template-form'">Template Form</a></li>
+              <li><a class="dropdown-item" [routerLink]="'reactive-form'">Reactive Form</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              API
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="'get-api'">Get API</a></li>
+              <li><a class="dropdown-item" [routerLink]="'post-api'">Post API</a></li>
+              <li><a class="dropdown-item" [routerLink]="'resource-api'">Resource API</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Customer 
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="'customer'">Customer Details</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " [routerLink]="'life-cycle-event'" aria-expanded="false">life-cycle-event </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<p>layout works!</p>

@@ -15,23 +15,31 @@ import { PostApiComponent } from './components/API/post-api/post-api.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { ResourceApiComponent } from './components/API/resource-api/resource-api.component';
 import { LifeCycleEventComponent } from './components/life-cycle-event/life-cycle-event.component';
+import { LoginComponent } from './components/login/login.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 export const routes: Routes = [
-    {path:'', redirectTo:'data-binding', pathMatch: 'full'},
-    {path:'admin', component: AdminComponent},
-    {path:'data-binding', component: DataBindingComponent},
-    {path:'ng-if', component: NgIfComponent},
-    {path:'ng-for', component: NgForComponent},
-    {path:'ng-class', component: NgClassComponent},
-    {path:'ng-style', component: NgStyleComponent},
-    {path:'control-flow', component: ControlStetmentComponent},
-    {path: 'signal', component: SignalComponent},
-    {path: 'linked-signal', component: LinkedSignalComponent},
-    {path: 'template-form', component: TemplateFormComponent},
-    {path: 'reactive-form', component: ReactiveFormComponent},
-    {path: 'get-api', component: GetApiComponent},
-    {path:'post-api', component: PostApiComponent},
-    {path: 'customer', component: CustomerComponent},
-    {path: 'resource-api', component: ResourceApiComponent},
-    {path: 'life-cycle-event', component: LifeCycleEventComponent},
+    {path:'', redirectTo:'login', pathMatch: 'full'},
+    {path:'login', component: LoginComponent},
+    {path:'', component: LayoutComponent,
+        children:[
+            {path:'admin', component: AdminComponent},
+            {path:'data-binding', component: DataBindingComponent},
+            {path:'ng-if', component: NgIfComponent},
+            {path:'ng-for', component: NgForComponent},
+            {path:'ng-class', component: NgClassComponent},
+            {path:'ng-style', component: NgStyleComponent},
+            {path:'control-flow', component: ControlStetmentComponent},
+            {path: 'signal', component: SignalComponent},
+            {path: 'linked-signal', component: LinkedSignalComponent},
+            {path: 'template-form', component: TemplateFormComponent},
+            {path: 'reactive-form', component: ReactiveFormComponent},
+            {path: 'get-api', component: GetApiComponent},
+            {path:'post-api', component: PostApiComponent},
+            {path: 'customer', component: CustomerComponent},
+            {path: 'resource-api', component: ResourceApiComponent},
+            {path: 'life-cycle-event', component: LifeCycleEventComponent},
+        ]
+    },
+
 ];
