@@ -17,11 +17,12 @@ import { ResourceApiComponent } from './components/API/resource-api/resource-api
 import { LifeCycleEventComponent } from './components/life-cycle-event/life-cycle-event.component';
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
     {path:'', redirectTo:'login', pathMatch: 'full'},
     {path:'login', component: LoginComponent},
-    {path:'', component: LayoutComponent,
+    {path:'', component: LayoutComponent, canActivate: [authGuard],
         children:[
             {path:'admin', component: AdminComponent},
             {path:'data-binding', component: DataBindingComponent},
