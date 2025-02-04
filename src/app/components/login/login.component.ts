@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
 
+  router = inject(Router);
+
   loginObj: any = {
     username: '',
     password: '',
@@ -18,6 +21,7 @@ export class LoginComponent {
     console.log(this.loginObj);
     if(this.loginObj.username == 'admin' && this.loginObj.password == 'admin@123'){
       console.log('Login Successfull');
+      this.router.navigateByUrl("admin");
 
     }else{
       alert('wrong credentials');
