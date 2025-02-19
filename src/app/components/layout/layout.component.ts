@@ -13,6 +13,7 @@ export class LayoutComponent {
 
   onLogout(){
     localStorage.removeItem('authUser');
+    localStorage.removeItem('authToken');
     this.router.navigateByUrl('login');
   }
 
