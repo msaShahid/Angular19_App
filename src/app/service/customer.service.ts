@@ -11,6 +11,7 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   tokenExpired$: Subject<boolean> = new Subject<boolean>(); 
+  tokenRecived$: Subject<boolean> = new Subject<boolean>(); 
 
   getCustomers(){
     return this.http.get(`${this.apiUrl}/GetCustomers`).pipe(

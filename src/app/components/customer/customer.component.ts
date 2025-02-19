@@ -24,8 +24,13 @@ export class CustomerComponent {
   isDeleting = false;
   customerDetails: any [] = [];
 
-  constructor(private customerService: CustomerService, private http: HttpClient) { 
+  constructor(private customerService: CustomerService, private http: HttpClient, private custService: CustomerService) { 
     this.loadCustomerData();
+    this.custService.tokenRecived$.subscribe((res) => {
+      if(res){
+        this.loadCustomerData();
+      }
+    })
   }
 
   loadCustomerData(){

@@ -5,18 +5,22 @@ import { catchError, throwError } from 'rxjs';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
-  const custService =  inject(CustomerService)
+  const custService = inject(CustomerService);
 
   return next(req).pipe(
-    catchError((error:HttpErrorResponse) => {
-      if(error.status === 401){
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 401) {
         console.log('Unauthorized');
-        const isContiue = confirm("Are you sure want to contiune?");
-        if(isContiue){
-          custService.tokenExpired$.next(true)
+        
+        const isContinue = confirm("Are you sure you want to continue?");
+        
+        if (isContinue) {
+          custService.tokenExpired$.next(true);
         }
       }
-      return throwError(error)
+      // Re-throw the error to continue the flow
+      return throwError(() => error);
     })
   );
+
 };

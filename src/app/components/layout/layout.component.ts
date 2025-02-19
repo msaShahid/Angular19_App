@@ -30,6 +30,7 @@ export class LayoutComponent {
           this.http.post("https://projectapi.gerasim.in/api/UserApp/refresh", authObj).subscribe((res: any) => {
             localStorage.setItem("authUser", JSON.stringify(res.data));
             localStorage.setItem("authToken",res.data.token);
+            this.custService.tokenRecived$.next(true);
           })
         }
       }
