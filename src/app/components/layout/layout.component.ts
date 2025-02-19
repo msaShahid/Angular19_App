@@ -12,7 +12,7 @@ export class LayoutComponent {
   router = inject(Router)
 
   onLogout(){
-    localStorage.removeItem('user');
+    localStorage.removeItem('authUser');
     this.router.navigateByUrl('login');
   }
 
