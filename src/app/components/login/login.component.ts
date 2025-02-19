@@ -36,7 +36,7 @@ export class LoginComponent {
 
     this.http.post("https://projectapi.gerasim.in/api/UserApp/login", this.apiLoginObj).subscribe((res:any) => {
     console.log(res);
-     localStorage.setItem("authUser",res.data.userId);
+     localStorage.setItem("authUser", JSON.stringify(res.data));
      localStorage.setItem("authToken",res.data.token);
      this.router.navigateByUrl("admin");
     },
