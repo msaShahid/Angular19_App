@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, viewChild, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TabsComponent } from "../../common/tabs/tabs.component";
 import { Car } from '../../../model/class/car';
@@ -15,6 +15,8 @@ export class PostApiComponent implements OnInit, AfterViewInit {
 
   currentTab: string = 'Car List';
   carList: ICarList[] =[]
+
+  @ViewChild('textCity') cityTextBox: ElementRef | undefined;
 
   carObj: Car = new Car();
 
