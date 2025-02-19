@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Subject, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ export class CustomerService {
 
   apiUrl = "https://freeapi.miniprojectideas.com/api/carRentalApp";
   constructor(private http: HttpClient) { }
+
+  tokenExpired$: Subject<boolean> = new Subject<boolean>(); 
 
   getCustomers(){
     return this.http.get(`${this.apiUrl}/GetCustomers`).pipe(
