@@ -18,10 +18,12 @@ import { LifeCycleEventComponent } from './components/life-cycle-event/life-cycl
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { authGuard } from './guard/auth.guard';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'login', pathMatch: 'full'},
     {path:'login', component: LoginComponent},
+    {path:'forgot-password', component: ForgotPasswordComponent},
     {path:'', component: LayoutComponent, canActivate: [authGuard],
         children:[
             {path:'admin', component: AdminComponent},
