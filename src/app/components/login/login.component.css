@@ -5,16 +5,20 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-    min-height: 100vh;
+html, body {
+    min-height: 100%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    padding: 2rem;
+    justify-content: center;
+    align-items: center;
     background: #f0f2f5;
 }
 
-/* Split Layout Form */
+.container-fluid {
+    display: flex;
+    justify-content: center;
+}
+
 .split-form {
     display: flex;
     background: white;
@@ -22,7 +26,6 @@ body {
     overflow: hidden;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
@@ -41,6 +44,9 @@ body {
 .split-form .form-side {
     flex: 1;
     padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .split-form input {
@@ -74,298 +80,59 @@ body {
     transform: translateY(-2px);
 }
 
-/* Floating Labels Form */
-.floating-form {
-    background: #1a1a1a;
-    padding: 2.5rem;
-    border-radius: 15px;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    color: white;
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .split-form {
+        flex-direction: column;
+    }
+
+    .split-form .image-side {
+        padding: 1.5rem;
+    }
+
+    .split-form .form-side {
+        padding: 2rem;
+    }
 }
 
-.floating-form .input-group {
-    position: relative;
-    margin: 2rem 0;
+/* Additional improvements for form styles */
+.split-form input:focus {
+    border-bottom-color: #FF6B6B;
+    background: #f9f9f9;
 }
 
-.floating-form input {
-    width: 100%;
-    padding: 0.8rem;
-    border: none;
-    border-bottom: 2px solid #444;
-    background: transparent;
-    color: white;
-    outline: none;
+.split-form button:active {
+    transform: scale(0.98);
 }
 
-.floating-form label {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #888;
-    transition: 0.3s;
-    pointer-events: none;
+.floating-form, .card-flip-container, .circle-form {
+    margin: 2rem auto;
 }
 
-.floating-form input:focus ~ label,
-.floating-form input:valid ~ label {
-    top: -10px;
-    font-size: 0.8rem;
-    color: #8B5CF6;
-}
-
-.floating-form input:focus {
-    border-bottom-color: #8B5CF6;
-}
-
-.floating-form button {
-    width: 100%;
-    padding: 1rem;
+.floating-form button:hover {
     background: #8B5CF6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 2rem;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    transform: scale(1.05);
 }
 
-.floating-form button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255,255,255,0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.floating-form button:hover::after {
-    width: 300px;
-    height: 300px;
-}
-
-/* Card Flip Form */
-.card-flip-container {
-    perspective: 1000px;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.card-flip {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-}
-
-.card-flip.flipped {
-    transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.card-back {
-    background: linear-gradient(135deg, #6366F1, #A855F7);
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.card-flip input {
-    width: 100%;
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    outline: none;
-}
-
-.card-flip button {
-    width: 100%;
-    padding: 0.8rem;
-    margin-top: 1rem;
-    border: none;
-    border-radius: 5px;
-    background: #6366F1;
-    color: white;
-    cursor: pointer;
-}
-
-/* Minimalist Circle Form */
-.circle-form {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.circle-form::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
-    background: #4CAF50;
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0.1;
-}
-
-.circle-form::after {
-    content: '';
-    position: absolute;
-    bottom: -30px;
-    left: -30px;
-    width: 150px;
-    height: 150px;
-    background: #4CAF50;
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0.1;
-}
-
-.circle-form form {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-
-.circle-form input {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    margin: 0.7rem 0;
-    border: none;
-    background: #f8f9fa;
-    border-radius: 25px;
-    outline: none;
-    transition: background 0.3s;
-}
-
-.circle-form input:focus {
-    background: #eef1f4;
-}
-
-.circle-form button {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 1.5rem;
-    border: none;
-    border-radius: 25px;
-    background: #4CAF50;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.3s;
+.card-flip .card-front, .card-flip .card-back {
+    padding: 3rem;
+    font-size: 1.2rem;
 }
 
 .circle-form button:hover {
-    transform: scale(1.02);
+    background: #388E3C;
+    transform: scale(1.05);
 }
 
-/* Material Design Form */
-.material-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-}
-
-.material-form .input-field {
-    position: relative;
-    margin: 2rem 0;
-}
-
-.material-form input {
-    width: 100%;
-    padding: 0.8rem 0;
-    border: none;
-    border-bottom: 2px solid #ddd;
-    outline: none;
-    transition: 0.2s;
-    background: transparent;
-}
-
-.material-form label {
-    position: absolute;
-    top: 0.8rem;
-    left: 0;
-    transition: 0.2s;
-    color: #999;
-}
-
-.material-form .bar {
-    position: relative;
-    display: block;
-    width: 100%;
-}
-
-.material-form .bar:before {
-    content: '';
-    height: 2px;
-    width: 0;
-    bottom: 0;
-    position: absolute;
-    background: #2196F3;
-    transition: 0.2s;
-    left: 50%;
-}
-
-.material-form input:focus ~ .bar:before {
-    width: 100%;
-    left: 0;
-}
-
-.material-form input:focus ~ label,
-.material-form input:valid ~ label {
-    top: -1.2rem;
-    font-size: 0.8rem;
-    color: #2196F3;
+.material-form input:focus {
+    border-bottom-color: #2196F3;
 }
 
 .material-form button {
-    width: 100%;
-    padding: 0.8rem;
-    background: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(33,150,243,0.3);
-    transition: 0.3s;
+    transition: box-shadow 0.3s, transform 0.3s;
 }
 
 .material-form button:hover {
-    box-shadow: 0 4px 8px rgba(33,150,243,0.4);
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
     transform: translateY(-1px);
 }
