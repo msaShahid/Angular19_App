@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,9 +11,12 @@ import { FormsModule } from '@angular/forms';
 })
 export class ForgotPasswordComponent {
 
+  http = inject(HttpClient);
+
+  emailId: string = '';
   isResetForm: boolean = false;
 
-  resetObj: any = {
+   resetObj: any = {
     "Email": "",
     "Otp":  "",
     "NewPassword": "",
@@ -20,11 +24,16 @@ export class ForgotPasswordComponent {
 
   sentOtp(){
     this.isResetForm = true;
+
+    this.http.post(`https://projectapi.gerasim.in/api/UserApp/send-reset-otp?emailId=${this.emailId}`,{}).subscribe((res) => {
+      console.log(res);
+      alert('Otp sent to your email');
+    })
     console.log('otp');
   }
 
   resetPassword(){
-    
+
   }
 
 }
