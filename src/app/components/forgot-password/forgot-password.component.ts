@@ -33,7 +33,13 @@ export class ForgotPasswordComponent {
   }
 
   resetPassword(){
-
+    this.http.post(`https://projectapi.gerasim.in/api/UserApp/verify-otp-reset-password`,this.resetObj).subscribe((res) =>{
+      if(res){
+        alert('Password reset successfully');
+      }else{
+        alert('Invalid otp');
+      }
+    })
   }
 
 }
