@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ForgotPasswordComponent {
 
+
+  sentOtp(){
+    console.log('otp');
+  }
+
 }
